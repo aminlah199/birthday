@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Birthday Surprise for Radinkuuu</title>
+<style>
+  body {
+    margin: 0;
+    background: #ffe4f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+    color: #d6336c;
+  }
+
+  .couple {
+    font-size: 100px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+  }
+
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 20px 0 0 0;
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+
+  .show-text {
+    opacity: 1;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 3px #ff66b3;
+    animation: twinkle 1.5s infinite ease-in-out alternate;
+  }
+
+  @keyframes twinkle {
+    from {opacity: 0.2; transform: scale(0.8);}
+    to {opacity: 1; transform: scale(1.2);}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="couple" id="couple">👩‍❤‍👨</div>
+  <h1 id="message">Happy Birthday, Radinkuuu! 🎉</h1>
+</div>
+
+<script>
+  // Step-by-step animation
+  const couple = document.getElementById('couple');
+  const message = document.getElementById('message');
+
+  // Show couple after 1s
+  setTimeout(() => {
+    couple.classList.add('show');
+  }, 1000);
+
+  // Show message after 3s
+  setTimeout(() => {
+    message.classList.add('show-text');
+  }, 3000);
+
+  // Sparkles generation
+  function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.animationDuration = (Math.random() * 1 + 0.5) + 's';
+    document.body.appendChild(sparkle);
+
+    // Remove sparkle after animation to avoid clutter
+    setTimeout(() => {
+      sparkle.remove();
+    }, 2000);
+  }
+
+  // Create sparkles continuously
+  setInterval(createSparkle, 300);
+</script>
+
+</body>
+</html>
